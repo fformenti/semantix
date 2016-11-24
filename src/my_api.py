@@ -17,25 +17,27 @@ edges['edge_id'] = edges.index
 json_str = edges.to_json(orient= 'records')
 edges = json.loads(json_str)
 
-# checking if node exists
+# checks if node exists
 def abort_if_node_doesnt_exist(node_id):
     if node_id not in nodes:
         abort(404, message="Node {} doesn't exist".format(node_id))
 
-# checking if edge exists
+# checks if edge exists
 def abort_if_edge_doesnt_exist(edge_id):
     if edge_id not in edges:
         abort(404, message="Edge {} doesn't exist".format(edge_id))
 
-#checking if edge already exists
+# checks if edge already exists
 def abort_if_already_exists(edge_list):
     pass
 
-#checking if edge already exists
+# checks if graph is fully connected
 def abort_if_not_fully_connected(edge_distances):
     if -1 in edge_distances['value']:
         abort(404, message= "The graphs is not Fully Connected")
 
+
+# --------- NODES -----------------
 
 node_fields = {
     'node': fields.String,
@@ -89,12 +91,12 @@ class NodeListAPI(Resource):
 
 edge_fields = {
     'name': fields.List(fields.String),
-    'v1': fields.String,
-    'v2': fields.String
+    # 'v1': fields.String,
+    # 'v2': fields.String
 }
 
 # EdgeAPI
-# shows a single edge with it's centrality value and lets you delete a edge
+# shows a single edge with and lets you delete a edge
 class EdgeAPI(Resource):
     def get(self, edge_id):
         abort_if_edge_doesnt_exist(edge_id)
