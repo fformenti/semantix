@@ -29,7 +29,7 @@ def get_distance(edges, edge_tuple):
 def get_centrality(distance):
 	"""
 	Input: A dataframe of distances between all possible pair of nodes
-	Return: Centrality of every node as a dataframe
+	Return: A dataframe with every node and it's non normalized Centrality
 	"""
 
 	nodes = pd.concat([distance['name'].map(lambda x: x[0]), distance['name'].map(lambda x: x[1])], ignore_index= True)
@@ -38,7 +38,7 @@ def get_centrality(distance):
 	distance['node'] = nodes
 
 	centrality = distance.groupby(['node'], as_index= False)['value'].sum()
-	centrality['centrality'] = centrality['value'].map(lambda x: 1.0 / ((len(centrality)-1) * x))
+	centrality['centrality'] = centrality['value'].map(lambda x: 1.0/x)
 	centrality['node_id'] = centrality.index
 	return centrality[['node_id','node','centrality']]
 
