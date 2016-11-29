@@ -12,7 +12,7 @@ $ python src/api.py
 Run the code below to start with a graph given by the provided path
 
 ```
-$ python src/my_api.py 'data/edges.dat'
+$ python src/api.py 'data/edges.dat'
 ```
 
 ## How to make requests:
