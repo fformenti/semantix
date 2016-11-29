@@ -28,7 +28,7 @@ $ curl http://localhost:5000/edges
 To add a new edge to the graph. Where node1 and node 2 are integers. The order does not matter since it's an undirected graph.
 
 ```
-$ curl http://localhost:5000/edges -d "{'name': [node1, node2]}" -X POST -v
+$ curl http://localhost:5000/edges -X POST -H "Content-Type: application/json" -d '{"name": [node1, node2]}'
 ```
 
 
