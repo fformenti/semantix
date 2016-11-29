@@ -6,13 +6,13 @@ Open the terminal and navigate to the root of the repo
 Run the code below to start with an empty graph
 
 ```
-$ python src/my_api.py
+$ python src/api.py
 ```
 
 Run the code below to start with a graph given by the provided path
 
 ```
-$ python src/my_api.py 'data/edges_sample.dat'
+$ python src/my_api.py 'data/edges.dat'
 ```
 
 ## How to make requests:
